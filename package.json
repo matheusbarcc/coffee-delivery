@@ -1,5 +1,5 @@
 {
-  "name": "coffee-shop",
+  "name": "coffee-delivery",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@phosphor-icons/react": "^2.1.7",
     "@stitches/react": "^1.2.8",
     "@types/node": "18.11.14",
     "@types/react": "18.0.26",

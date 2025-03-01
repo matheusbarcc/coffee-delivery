@@ -1,4 +1,4 @@
-import { createStitches } from '@stitches/react';
+import { createStitches } from '@stitches/react'
 
 export const { styled, globalCss, theme, getCssText } = createStitches({
   theme: {
@@ -51,15 +51,15 @@ export const { styled, globalCss, theme, getCssText } = createStitches({
       button: '160%',
     },
   },
-});
+})
 
-const globalStyles = globalCss({
+export const globalStyles = globalCss({
   '*': { margin: 0, padding: 0, boxSizing: 'border-box' },
   body: {
     fontFamily: '$text',
     backgroundColor: '$background',
     color: '$base-text',
   },
-});
+})
 
-globalStyles();
+globalStyles()

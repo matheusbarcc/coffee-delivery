@@ -1,13 +1,15 @@
-import { Hero, HeroContent, Heading, Items } from './style'
-import background from '../../../assets/images/background.png'
-import heroImage from '../../../assets/images/hero-image.png'
+import { Hero, HeroContent, Heading, Items, CoffeeList } from './style'
+import background from '../../../public/images/background.png'
+import heroImage from '../../../public/images/hero-image.png'
 import Image from 'next/image'
 import { Coffee, Package, ShoppingCart, Timer } from '@phosphor-icons/react'
 import { theme } from '../../styles/globals'
+import { CoffeeCard } from '../../components/CoffeeCard'
+import { coffees } from '../../../data.json'
 
 export default function Home() {
   return (
-    <div>
+    <div style={{ marginTop: '104px' }}>
       <Hero>
         <HeroContent>
           <div>
@@ -61,6 +63,16 @@ export default function Home() {
         </HeroContent>
         <Image src={background} id="hero-bg" alt="" />
       </Hero>
+
+      <CoffeeList>
+        <h2>Nossos cafés</h2>
+
+        <div id="list">
+          {coffees.map((coffee) => {
+            return <CoffeeCard key={coffee.id} coffee={coffee} />
+          })}
+        </div>
+      </CoffeeList>
     </div>
   )
 }

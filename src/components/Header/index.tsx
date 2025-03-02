@@ -1,5 +1,5 @@
 import { ActionsContainer, Cart, Container, Location } from './style'
-import logo from '../../../assets/logo.svg'
+import logo from '../../../public/logo.svg'
 import Image from 'next/image'
 import { MapPin, ShoppingCart } from '@phosphor-icons/react'
 

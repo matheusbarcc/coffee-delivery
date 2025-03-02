@@ -8,7 +8,7 @@ export const Hero = styled('div', {
     top: 0,
     left: 0,
     maxHeight: '544px',
-    width: '100vw',
+    width: '100%',
   },
 })
 
@@ -47,7 +47,7 @@ export const Items = styled('div', {
   gridTemplateColumns: '1fr 1fr',
   rowGap: '1.25rem',
 
-  div: {
+  '& > div': {
     fontSize: '$text-m',
     color: '$base-text',
 
@@ -57,7 +57,25 @@ export const Items = styled('div', {
 
     svg: {
       padding: '.5rem',
-      borderRadius: '9999px',
+      borderRadius: '999px',
     },
+  },
+})
+
+export const CoffeeList = styled('div', {
+  padding: '2rem 25rem',
+
+  '& > h2': {
+    fontFamily: '$title',
+    fontSize: '$title-l',
+    color: '$base-subtitle',
+    lineHeight: '$normal',
+    marginBottom: '3.375rem',
+  },
+  '& > div': {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr 1fr',
+    gap: '1rem',
+    rowGap: '3rem',
   },
 })

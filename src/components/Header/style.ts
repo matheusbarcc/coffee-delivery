@@ -2,7 +2,7 @@ import { styled } from '../../styles/globals'
 
 export const Container = styled('div', {
   background: '$background',
-  padding: '2rem 25rem',
+  padding: '2rem 24rem',
 
   display: 'flex',
   alignItems: 'center',

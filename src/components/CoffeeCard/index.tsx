@@ -8,7 +8,7 @@ import {
   Tag,
   TagsContainer,
 } from './style'
-import { ShoppingCart, ShoppingCartSimple } from '@phosphor-icons/react'
+import { ShoppingCartSimple } from '@phosphor-icons/react'
 import { AmountInput } from '../AmountInput'
 
 export interface CoffeeCardProps {

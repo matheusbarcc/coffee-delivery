@@ -13,7 +13,7 @@ export const Hero = styled('div', {
 })
 
 export const HeroContent = styled('div', {
-  padding: '6rem 25rem',
+  padding: '6rem 24rem',
 
   display: 'flex',
   alignItems: 'center',
@@ -63,7 +63,7 @@ export const Items = styled('div', {
 })
 
 export const CoffeeList = styled('div', {
-  padding: '2rem 25rem',
+  padding: '2rem 24rem',
 
   '& > h2': {
     fontFamily: '$title',
@@ -77,5 +77,6 @@ export const CoffeeList = styled('div', {
     gridTemplateColumns: '1fr 1fr 1fr 1fr',
     gap: '1rem',
     rowGap: '3rem',
+    gridColumnGap: '2rem',
   },
 })

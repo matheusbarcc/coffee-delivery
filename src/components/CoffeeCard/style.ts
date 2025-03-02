@@ -1,4 +1,3 @@
-import { cursorTo } from 'readline'
 import { styled } from '../../styles/globals'
 
 export const Container = styled('div', {

@@ -1,12 +1,16 @@
+import { formatDiagnosticsWithColorAndContext } from 'typescript'
 import { styled } from '../../styles/globals'
 
 export const Container = styled('div', {
   display: 'flex',
-  alignItems: 'center',
   gap: '2rem',
 
   marginTop: '2.5rem',
   padding: '6rem 24rem',
+
+  '& > div': {
+    width: '100%',
+  },
 
   h2: {
     fontFamily: '$title',
@@ -120,4 +124,139 @@ export const PaymentRadioForm = styled('div', {
   gap: '.75rem',
 
   width: '100%',
+})
+
+export const CartSummaryContainer = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '1.5rem',
+  width: '100%',
+
+  background: '$base-card',
+  padding: '2.5rem',
+  borderRadius: '6px 36px 6px 36px',
+})
+
+export const CartItem = styled('div', {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '1.25rem',
+  paddingBottom: '1.5rem',
+  borderBottom: '1px solid $base-button',
+
+  '& > img': {
+    width: '64px',
+    height: '64px',
+  },
+
+  '& > div': {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '.5rem',
+
+    width: '100%',
+  },
+})
+
+export const CartItemInfo = styled('div', {
+  display: 'flex',
+  justifyContent: 'space-between',
+
+  width: '100%',
+
+  fontSize: '$text-m',
+  color: '$base-subtitle',
+
+  span: {
+    fontWeight: 'bold',
+    color: '$base-text',
+  },
+})
+export const CartItemActions = styled('div', {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '.5rem',
+
+  '& > button': {
+    all: 'unset',
+    display: 'flex',
+    alignItems: 'center',
+    justifyItems: 'center',
+    gap: '.25rem',
+
+    background: '$base-button',
+    padding: '.625rem',
+    borderRadius: '6px',
+
+    fontSize: '$button-m',
+    color: '$base-text',
+
+    svg: {
+      color: '$purple',
+    },
+
+    transition: 'background .2s',
+
+    '&:hover': {
+      background: '$base-hover',
+      cursor: 'pointer',
+    },
+  },
+})
+
+export const Subtotal = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '.75rem',
+
+  fontSize: '$text-s',
+  color: '$base-text',
+
+  width: '100%',
+
+  '& > div': {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+
+    '& > span': {
+      fontSize: '$text-m',
+    },
+  },
+
+  '& > div:last-child': {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+
+    fontSize: '$text-l',
+    fontWeight: '$bold',
+    color: '$base-subtitle',
+
+    '& > span': {
+      fontSize: '$text-l',
+    },
+  },
+})
+
+export const ConfirmButton = styled('button', {
+  all: 'unset',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+
+  background: '$yellow',
+  padding: '.75rem',
+  borderRadius: '6px',
+
+  fontSize: '$button-g',
+  fontWeight: 'bold',
+  color: '$white',
+
+  transition: 'background .2s',
+
+  '&:hover': {
+    background: '$yellow-dark',
+    cursor: 'pointer',
+  },
 })

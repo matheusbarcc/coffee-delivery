@@ -14,6 +14,8 @@ export const Container = styled('div', {
 
   fontSize: '$button-m',
 
+  transition: 'background .2s',
+
   '&:hover': {
     background: '$base-hover',
     cursor: 'pointer',

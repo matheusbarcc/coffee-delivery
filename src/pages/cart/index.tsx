@@ -4,6 +4,7 @@ import {
   CurrencyDollar,
   MapPinLine,
   Money,
+  Trash,
 } from '@phosphor-icons/react'
 import {
   AddressContainer,
@@ -14,8 +15,18 @@ import {
   PaymentContainer,
   PaymentHeading,
   PaymentRadioForm,
+  CartSummaryContainer,
+  CartItem,
+  CartItemActions,
+  CartItemInfo,
+  Subtotal,
+  ConfirmButton,
 } from './style'
 import { PaymentRadio } from '../../components/PaymentRadio'
+import Image from 'next/image'
+
+import { coffees } from '../../../data.json'
+import { AmountInput } from '../../components/AmountInput'
 
 export default function Cart() {
   return (
@@ -77,6 +88,45 @@ export default function Cart() {
         </div>
         <div>
           <h2>Cafés selecionados</h2>
+          <CartSummaryContainer>
+            <CartItem>
+              <Image src={coffees[0].image} alt="" width={64} height={64} />
+              <div>
+                <CartItemInfo>
+                  {coffees[0].title}{' '}
+                  <span>
+                    {coffees[0].price.toLocaleString('pt-br', {
+                      style: 'currency',
+                      currency: 'BRL',
+                    })}
+                  </span>
+                </CartItemInfo>
+                <CartItemActions>
+                  <AmountInput
+                    amount={1}
+                    increaseAmount={() => null}
+                    decreaseAmount={() => null}
+                  />
+                  <button>
+                    <Trash size={19} />
+                    REMOVER
+                  </button>
+                </CartItemActions>
+              </div>
+            </CartItem>
+            <Subtotal>
+              <div>
+                Total de itens <span>R$ 29,70</span>
+              </div>
+              <div>
+                Entrega <span>R$ 3,50</span>
+              </div>
+              <div>
+                Total <span>R$ 33,20</span>
+              </div>
+            </Subtotal>
+            <ConfirmButton type="submit">CONFIRMAR PEDIDO</ConfirmButton>
+          </CartSummaryContainer>
         </div>
       </Container>
     </form>

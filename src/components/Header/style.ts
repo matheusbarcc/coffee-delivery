@@ -38,7 +38,8 @@ export const Location = styled('div', {
   },
 })
 
-export const Cart = styled('div', {
+export const Cart = styled('button', {
+  all: 'unset',
   background: '$yellow-light',
   padding: '.5rem',
   borderRadius: '6px',
@@ -47,4 +48,8 @@ export const Cart = styled('div', {
   alignItems: 'center',
 
   color: '$yellow-dark',
+
+  '&:hover': {
+    cursor: 'pointer',
+  },
 })

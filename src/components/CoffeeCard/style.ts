@@ -92,5 +92,9 @@ export const Actions = styled('div', {
       background: '$purple',
       cursor: 'pointer',
     },
+
+    '&:disabled': {
+      opacity: 0.6,
+    },
   },
 })

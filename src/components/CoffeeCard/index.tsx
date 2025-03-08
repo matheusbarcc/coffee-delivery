@@ -8,8 +8,10 @@ import {
   Tag,
   TagsContainer,
 } from './style'
-import { ShoppingCartSimple } from '@phosphor-icons/react'
+import { Check, ShoppingCartSimple } from '@phosphor-icons/react'
 import { AmountInput } from '../AmountInput'
+import { useCart } from '../../hooks/useCart'
+import { useState } from 'react'
 
 export interface CoffeeCardProps {
   coffee: {
@@ -23,6 +25,27 @@ export interface CoffeeCardProps {
 }
 
 export function CoffeeCard({ coffee }: CoffeeCardProps) {
+  const [amount, setAmount] = useState(1)
+  const [isItemAdded, setIsItemAdded] = useState(false)
+  const { addItem } = useCart()
+
+  function handleIncreaseAmount() {
+    setAmount((state) => state + 1)
+    console.log(amount)
+  }
+
+  function handleDecreaseAmount() {
+    if (amount > 1) {
+      setAmount((state) => state - 1)
+    }
+    console.log(amount)
+  }
+
+  function handleAddItem() {
+    addItem({ id: coffee.id, amount })
+    setIsItemAdded(true)
+  }
+
   return (
     <Container>
       <Image src={coffee.image} alt="" width={120} height={120} />
@@ -44,12 +67,16 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
         </PriceTag>
         <Actions>
           <AmountInput
-            amount={1}
-            increaseAmount={() => null}
-            decreaseAmount={() => null}
+            amount={amount}
+            increaseAmount={handleIncreaseAmount}
+            decreaseAmount={handleDecreaseAmount}
           />
-          <button>
-            <ShoppingCartSimple weight="fill" size={22} />
+          <button disabled={isItemAdded} onClick={handleAddItem}>
+            {isItemAdded ? (
+              <Check weight="bold" size={22} />
+            ) : (
+              <ShoppingCartSimple weight="fill" size={22} />
+            )}
           </button>
         </Actions>
       </Footer>

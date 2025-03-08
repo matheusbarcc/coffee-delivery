@@ -1,11 +1,11 @@
 import { MapPin } from '@phosphor-icons/react/dist/ssr'
 import { Container, Content, Heading, OrderSummary, SummaryItem } from './style'
-import { theme } from '../../styles/globals'
+import { theme } from '../../../styles/globals'
 import { CurrencyDollar, Timer } from '@phosphor-icons/react'
-import success from '../../../public/images/success.svg'
+import success from '../../../../public/images/success.svg'
 import Image from 'next/image'
 
-export default function Success() {
+export default function Order() {
   return (
     <Container>
       <Heading>
@@ -17,19 +17,20 @@ export default function Success() {
           <div>
             <SummaryItem>
               <MapPin
-                size={36}
+                size={35}
                 weight="fill"
                 color={theme.colors.background.value}
                 style={{ backgroundColor: theme.colors.purple.value }}
               />
               <div>
-                Entrega em <span>Rua João Daniel Martinelli, 102</span> Farrapos
-                - Porto Alegre, RS
+                Entrega em <span>Rua João Daniel Martinelli, 102</span>
+                <br />
+                Farrapos - Porto Alegre, RS
               </div>
             </SummaryItem>
             <SummaryItem>
               <Timer
-                size={36}
+                size={35}
                 weight="fill"
                 color={theme.colors.background.value}
                 style={{ backgroundColor: theme.colors.yellow.value }}
@@ -42,7 +43,7 @@ export default function Success() {
             </SummaryItem>
             <SummaryItem>
               <CurrencyDollar
-                size={36}
+                size={35}
                 color={theme.colors.background.value}
                 style={{ backgroundColor: theme.colors['yellow-dark'].value }}
               />

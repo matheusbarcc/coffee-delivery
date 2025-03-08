@@ -27,6 +27,22 @@ import Image from 'next/image'
 
 import { coffees } from '../../../data.json'
 import { AmountInput } from '../../components/AmountInput'
+import { z } from 'zod'
+
+const newOrder = z.object({
+  cep: z.number().min(1, 'Informe o CEP'),
+  street: z.string().min(1, 'Informe a rua'),
+  number: z.number().min(1, 'Informe o número'),
+  complement: z.string().optional().nullable(),
+  neighborhood: z.string().min(1, 'Informe o bairro'),
+  city: z.string().min(1, 'Informe a cidade'),
+  state: z.string().min(1, 'Informe o estado'),
+  paymentType: z.enum(['credit', 'debit', 'cash'], {
+    invalid_type_error: 'Informe a forma de pagamento',
+  }),
+})
+
+export type OrderInfo = z.infer<typeof newOrder>
 
 export default function Cart() {
   return (

@@ -86,6 +86,8 @@ export const Actions = styled('div', {
     color: '$background',
     borderRadius: '6px',
 
+    transition: 'background .2s',
+
     '&:hover': {
       background: '$purple',
       cursor: 'pointer',

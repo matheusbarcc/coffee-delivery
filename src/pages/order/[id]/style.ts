@@ -1,4 +1,4 @@
-import { styled } from '../../styles/globals'
+import { styled } from '../../../styles/globals'
 
 export const Container = styled('div', {
   display: 'flex',
@@ -36,7 +36,7 @@ export const Content = styled('div', {
 export const OrderSummary = styled('div', {
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center',
+  // justifyContent: 'center',
 
   width: '570px',
 
@@ -49,9 +49,10 @@ export const OrderSummary = styled('div', {
 
   '&::after': {
     content: '',
+    left: -2,
     position: 'absolute',
     height: '101%',
-    width: '100.5%',
+    width: '100.7%',
     borderRadius: '6px 36px',
     backgroundImage: 'linear-gradient(to bottom right, $yellow, $purple)',
     zIndex: '-1',
@@ -67,7 +68,7 @@ export const OrderSummary = styled('div', {
 export const SummaryItem = styled('div', {
   display: 'flex',
   alignItems: 'center',
-  gap: '.75rem',
+  gap: '1rem',
 
   fontSize: '$text-m',
 

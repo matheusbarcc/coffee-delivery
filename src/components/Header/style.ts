@@ -52,4 +52,25 @@ export const Cart = styled('button', {
   '&:hover': {
     cursor: 'pointer',
   },
+
+  position: 'relative',
+})
+
+export const ItemAmount = styled('div', {
+  position: 'absolute',
+  top: -8,
+  right: -8,
+
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+
+  background: '$yellow-dark',
+  fontSize: '$text-s',
+  fontWeight: 'bold',
+  color: '$white',
+  borderRadius: '999px',
+  width: '20px',
+  height: '20px',
+  padding: '.25rem',
 })

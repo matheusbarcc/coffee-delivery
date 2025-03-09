@@ -10,7 +10,7 @@ export interface Item {
 }
 
 export interface Order extends OrderInfo {
-  id: string
+  id: number
   items: Item[]
 }
 
@@ -68,7 +68,7 @@ export function cartReducer(state: CartState, action: Actions) {
     case ActionTypes.CHECKOUT_CART:
       return produce(state, (draft) => {
         const newOrder = {
-          id: uuidv4(),
+          id: new Date().getTime(),
           items: state.cart,
           ...action.payload.order,
         }

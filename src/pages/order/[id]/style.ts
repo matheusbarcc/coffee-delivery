@@ -25,6 +25,33 @@ export const Heading = styled('div', {
     fontSize: '$text-l',
     color: '$base-subtitle',
   },
+
+  '& > button': {
+    all: 'unset',
+
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '.75rem',
+
+    marginTop: '2rem',
+    maxWidth: '300px',
+
+    background: '$yellow',
+    padding: '1rem',
+    borderRadius: '6px',
+
+    fontWeight: 'bold',
+    color: '$white',
+
+    transition: 'background .2s, gap .2s',
+
+    '&:hover': {
+      background: '$yellow-dark',
+      cursor: 'pointer',
+      gap: '1.125rem',
+    },
+  },
 })
 
 export const Content = styled('div', {

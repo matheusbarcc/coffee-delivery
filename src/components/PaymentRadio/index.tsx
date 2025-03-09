@@ -1,4 +1,5 @@
-import { forwardRef, InputHTMLAttributes, LegacyRef } from 'react'
+import { InputHTMLAttributes, LegacyRef, forwardRef } from 'react'
+
 import { Container } from './style'
 
 type Props = InputHTMLAttributes<HTMLInputElement> & {
@@ -11,7 +12,7 @@ export const PaymentRadio = forwardRef(function Radio(
 ) {
   return (
     <Container data-state={isSelected}>
-      <input type="radio" ref={ref} {...rest} />
+      <input type="radio" checked={isSelected} ref={ref} {...rest} />
       {children}
     </Container>
   )

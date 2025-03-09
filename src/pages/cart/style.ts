@@ -254,8 +254,13 @@ export const ConfirmButton = styled('button', {
 
   transition: 'background .2s',
 
-  '&:hover': {
+  '&:not(:disabled):hover': {
     background: '$yellow-dark',
     cursor: 'pointer',
+  },
+
+  '&:disabled': {
+    opacity: 0.5,
+    cursor: 'not-allowed',
   },
 })

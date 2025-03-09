@@ -13,6 +13,11 @@ export const Container = styled('div', {
   left: 0,
   right: 0,
   zIndex: 1000,
+
+  '& > button': {
+    all: 'unset',
+    cursor: 'pointer',
+  },
 })
 
 export const ActionsContainer = styled('div', {

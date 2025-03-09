@@ -15,6 +15,7 @@ import {
   loadStateAction,
   removeItemAction,
 } from '../reducers/actions'
+import { useRouter } from 'next/router'
 
 interface CartContextType {
   cart: Item[]
@@ -51,6 +52,8 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     setIsHydrated(true)
   }, [])
 
+  const router = useRouter()
+
   const { cart, orders } = cartState
 
   function addItem(item: Item) {
@@ -70,7 +73,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
   }
 
   function checkoutCart(order: OrderInfo) {
-    dispatch(checkoutCartAction(order))
+    dispatch(checkoutCartAction(order, router))
   }
 
   useEffect(() => {

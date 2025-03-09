@@ -1,5 +1,6 @@
 import { CartState, Item } from './reducer'
 import { OrderInfo } from '../pages/cart'
+import { NextRouter } from 'next/router'
 
 export enum ActionTypes {
   ADD_ITEM = 'ADD_ITEM',
@@ -30,6 +31,7 @@ export type Actions =
       type: ActionTypes.CHECKOUT_CART
       payload: {
         order: OrderInfo
+        callback: NextRouter
       }
     }
   | {
@@ -75,11 +77,12 @@ export function decreaseItemAmountAction(itemId: Item['id']) {
   } satisfies Actions
 }
 
-export function checkoutCartAction(order: OrderInfo) {
+export function checkoutCartAction(order: OrderInfo, callback: NextRouter) {
   return {
     type: ActionTypes.CHECKOUT_CART,
     payload: {
       order,
+      callback,
     },
   } satisfies Actions
 }

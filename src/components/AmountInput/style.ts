@@ -26,5 +26,10 @@ export const Container = styled('div', {
       color: '$purple-dark',
       cursor: 'pointer',
     },
+
+    '&:disabled': {
+      opacity: 0.5,
+      cursor: 'not-allowed',
+    },
   },
 })

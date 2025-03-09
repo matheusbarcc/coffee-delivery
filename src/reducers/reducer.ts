@@ -2,7 +2,7 @@
 import { produce } from 'immer'
 import { OrderInfo } from '../pages/cart'
 import { Actions, ActionTypes } from './actions'
-import { randomUUID } from 'crypto'
+import { v4 as uuidv4 } from 'uuid'
 
 export interface Item {
   id: string
@@ -68,12 +68,14 @@ export function cartReducer(state: CartState, action: Actions) {
     case ActionTypes.CHECKOUT_CART:
       return produce(state, (draft) => {
         const newOrder = {
-          id: randomUUID().toString(),
+          id: uuidv4(),
           items: state.cart,
           ...action.payload.order,
         }
         draft.orders.push(newOrder)
         draft.cart = []
+
+        action.payload.callback.push(`order/${newOrder.id}`)
       })
 
     case ActionTypes.LOAD_STATE:

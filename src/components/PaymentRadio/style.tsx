@@ -1,6 +1,6 @@
 import { styled } from '../../styles/globals'
 
-export const Container = styled('div', {
+export const Container = styled('label', {
   display: 'flex',
   alignItems: 'center',
   gap: '.75rem',

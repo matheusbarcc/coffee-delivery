@@ -1,34 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Coffee Delivery
 
-## Getting Started
+[![Next.js](https://img.shields.io/badge/Next.js-000?logo=nextdotjs&logoColor=white)](https://nextjs.org/)  
+[![Stitches](https://img.shields.io/badge/Stitches-FF4785?logo=stitches&logoColor=white)](https://stitches.dev/)  
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-First, run the development server:
+Coffee Delivery is a modern e-commerce web application for a coffee shop. Users can browse and select from multiple types of coffee, add them to the cart, provide address details for delivery, and choose a payment method.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## 🚀 Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- ☕ Browse a variety of coffee options  
+- 🛒 Add and remove items from the cart  
+- 📍 Provide delivery address details 
+- 💳 Select a payment method  
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## 🔗 Live Demo
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Coming soon...
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## 🛠️ Tech Stack
 
-## Learn More
+- **React & Next.js** – Server-side rendering and frontend framework  
+- **Immer** – Simplified state management for cart logic  
+- **Stitches** – Styling solution for modern UI  
 
-To learn more about Next.js, take a look at the following resources:
+## 📦 Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/yourusername/coffee-delivery.git
+   cd coffee-delivery
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+2. Install dependencies:
+   ```sh
+   npm install
+   # or
+   yarn install
+   ```
 
-## Deploy on Vercel
+3. Start the development server:
+   ```sh
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. Open your browser and go to [http://localhost:3000](http://localhost:3000)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+

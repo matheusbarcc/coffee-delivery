@@ -67,6 +67,7 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
         </PriceTag>
         <Actions>
           <AmountInput
+            disabled={isItemAdded}
             amount={amount}
             increaseAmount={handleIncreaseAmount}
             decreaseAmount={handleDecreaseAmount}

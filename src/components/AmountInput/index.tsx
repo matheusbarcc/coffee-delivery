@@ -5,20 +5,26 @@ export interface AmountInputProps {
   amount: number
   increaseAmount: () => void
   decreaseAmount: () => void
+  disabled?: boolean
 }
 
 export function AmountInput({
   amount,
   increaseAmount,
   decreaseAmount,
+  disabled,
 }: AmountInputProps) {
   return (
     <Container>
-      <button type="button" disabled={amount === 1} onClick={decreaseAmount}>
+      <button
+        type="button"
+        disabled={amount === 1 || disabled}
+        onClick={decreaseAmount}
+      >
         <Minus />
       </button>
       {amount}
-      <button type="button" onClick={increaseAmount}>
+      <button disabled={disabled} type="button" onClick={increaseAmount}>
         <Plus />
       </button>
     </Container>

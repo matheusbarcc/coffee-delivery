@@ -56,29 +56,21 @@ export const AddressHeading = styled('div', {
 export const AddressForm = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  gap: '1rem',
+  width: '100%',
 
-  '& > div': {
-    display: 'flex',
-    alignItems: 'center',
+  '& > div:not(:last-child)': {
+    display: 'grid',
+    gap: '.75rem',
+    marginBottom: '1rem',
+  },
+
+  '& > div:last-child': {
+    display: 'grid',
     gap: '.75rem',
   },
-})
 
-export const Input = styled('input', {
-  background: '$base-input',
-  border: '1px solid $base-button',
-  padding: '.75rem',
-  borderRadius: '4px',
-
-  '&::placeholder': {
-    fontSize: '$text-s',
-    color: '$base-label',
-  },
-
-  '&:focus': {
-    outline: '0',
-    border: '1px solid $yellow-dark',
+  '& > div.text-input-container': {
+    marginBottom: '1rem',
   },
 })
 
@@ -93,6 +85,12 @@ export const PaymentContainer = styled('div', {
   background: '$base-card',
   borderRadius: '6px',
   padding: '2.5rem',
+
+  '& > div:last-child': {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '.125rem',
+  },
 })
 
 export const PaymentHeading = styled('div', {

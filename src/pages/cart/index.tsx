@@ -11,7 +11,6 @@ import {
   AddressHeading,
   AddressForm,
   Container,
-  Input,
   PaymentContainer,
   PaymentHeading,
   PaymentRadioForm,
@@ -29,13 +28,15 @@ import { coffees } from '../../../data.json'
 import { AmountInput } from '../../components/AmountInput'
 import { z } from 'zod'
 import { useCart } from '../../hooks/useCart'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { TextInput } from '../../components/TextInput'
+import { ErrorMessage } from '../../components/TextInput/style'
 
 const newOrder = z.object({
-  cep: z.number().min(1, 'Informe o CEP'),
+  cep: z.number({ invalid_type_error: 'Informe um CEP válido' }),
   street: z.string().min(1, 'Informe a rua'),
-  number: z.number().min(1, 'Informe o número'),
+  number: z.number({ invalid_type_error: 'Informe o número' }),
   complement: z.string().optional().nullable(),
   neighborhood: z.string().min(1, 'Informe o bairro'),
   city: z.string().min(1, 'Informe a cidade'),
@@ -120,35 +121,51 @@ export default function Cart() {
               </div>
             </AddressHeading>
             <AddressForm>
-              <Input
-                placeholder="CEP"
-                css={{ maxWidth: '200px' }}
-                {...register('cep', { valueAsNumber: true })}
-              />
-              <Input placeholder="Rua" {...register('street')} />
-              <div>
-                <Input
-                  placeholder="Número"
+              <div className="text-input-container">
+                <TextInput
+                  placeholder="CEP"
                   css={{ maxWidth: '200px' }}
-                  {...register('number', { valueAsNumber: true })}
-                />
-                <Input
-                  placeholder="Complemento (opcional)"
-                  css={{ width: '100%' }}
-                  {...register('complement')}
+                  {...register('cep', { valueAsNumber: true })}
+                  error={errors.cep}
                 />
               </div>
-              <div>
-                <Input placeholder="Bairro" {...register('neighborhood')} />
-                <Input
-                  placeholder="Cidade"
-                  css={{ minWidth: '276px' }}
-                  {...register('city')}
+
+              <div className="text-input-container">
+                <TextInput
+                  placeholder="Rua"
+                  {...register('street')}
+                  error={errors.street}
                 />
-                <Input
+              </div>
+
+              <div style={{ gridTemplateColumns: '200px 1fr' }}>
+                <TextInput
+                  placeholder="Número"
+                  {...register('number', { valueAsNumber: true })}
+                  error={errors.number}
+                />
+                <TextInput
+                  placeholder="Complemento (opcional)"
+                  {...register('complement')}
+                  error={errors.complement}
+                />
+              </div>
+
+              <div style={{ gridTemplateColumns: '200px 276px 1fr' }}>
+                <TextInput
+                  placeholder="Bairro"
+                  {...register('neighborhood')}
+                  error={errors.neighborhood}
+                />
+                <TextInput
+                  placeholder="Cidade"
+                  {...register('city')}
+                  error={errors.city}
+                />
+                <TextInput
                   placeholder="UF"
-                  css={{ width: '100%' }}
                   {...register('state')}
+                  error={errors.state}
                 />
               </div>
             </AddressForm>
@@ -164,32 +181,37 @@ export default function Cart() {
                 </p>
               </div>
             </PaymentHeading>
-            <PaymentRadioForm>
-              <PaymentRadio
-                isSelected={selectedPaymentMethod === 'credit'}
-                {...register('paymentMethod')}
-                value="credit"
-              >
-                <CreditCard size={16} />
-                <span>CARTÃO DE CRÉDITO</span>
-              </PaymentRadio>
-              <PaymentRadio
-                isSelected={selectedPaymentMethod === 'debit'}
-                {...register('paymentMethod')}
-                value="debit"
-              >
-                <Bank size={16} />
-                <span>CARTÃO DE DÉBITO</span>
-              </PaymentRadio>
-              <PaymentRadio
-                isSelected={selectedPaymentMethod === 'cash'}
-                {...register('paymentMethod')}
-                value="cash"
-              >
-                <Money size={16} />
-                <span>DINHEIRO</span>
-              </PaymentRadio>
-            </PaymentRadioForm>
+            <div>
+              <PaymentRadioForm>
+                <PaymentRadio
+                  isSelected={selectedPaymentMethod === 'credit'}
+                  {...register('paymentMethod')}
+                  value="credit"
+                >
+                  <CreditCard size={16} />
+                  <span>CARTÃO DE CRÉDITO</span>
+                </PaymentRadio>
+                <PaymentRadio
+                  isSelected={selectedPaymentMethod === 'debit'}
+                  {...register('paymentMethod')}
+                  value="debit"
+                >
+                  <Bank size={16} />
+                  <span>CARTÃO DE DÉBITO</span>
+                </PaymentRadio>
+                <PaymentRadio
+                  isSelected={selectedPaymentMethod === 'cash'}
+                  {...register('paymentMethod')}
+                  value="cash"
+                >
+                  <Money size={16} />
+                  <span>DINHEIRO</span>
+                </PaymentRadio>
+              </PaymentRadioForm>
+              {errors.paymentMethod && (
+                <ErrorMessage>{errors.paymentMethod.message}</ErrorMessage>
+              )}
+            </div>
           </PaymentContainer>
         </div>
         <div>

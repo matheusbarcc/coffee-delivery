@@ -88,9 +88,18 @@ export const Actions = styled('div', {
 
     transition: 'background .2s',
 
-    '&:hover': {
+    svg: {
+      width: '100%',
+      transition: 'width .2s',
+    },
+
+    '&:not(:disabled):hover': {
       background: '$purple',
       cursor: 'pointer',
+
+      svg: {
+        width: '90%',
+      },
     },
 
     '&:disabled': {

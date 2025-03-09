@@ -22,14 +22,15 @@ export const Container = styled('div', {
 
     color: '$purple',
 
-    '&:hover': {
+    transition: 'color .2s',
+
+    '&:not(:disabled):hover': {
       color: '$purple-dark',
       cursor: 'pointer',
     },
 
     '&:disabled': {
       opacity: 0.5,
-      cursor: 'not-allowed',
     },
   },
 })

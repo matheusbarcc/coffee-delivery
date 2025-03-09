@@ -1,4 +1,4 @@
-import { Item } from './reducer'
+import { CartState, Item } from './reducer'
 import { OrderInfo } from '../pages/cart'
 
 export enum ActionTypes {
@@ -7,6 +7,7 @@ export enum ActionTypes {
   INCREASE_ITEM_AMOUNT = 'INCREASE_ITEM_AMOUNT',
   DECREASE_ITEM_AMOUNT = 'DECREASE_ITEM_AMOUNT',
   CHECKOUT_CART = 'CHECKOUT_CART',
+  LOAD_STATE = 'LOAD_STATE',
 }
 
 export type Actions =
@@ -29,6 +30,12 @@ export type Actions =
       type: ActionTypes.CHECKOUT_CART
       payload: {
         order: OrderInfo
+      }
+    }
+  | {
+      type: ActionTypes.LOAD_STATE
+      payload: {
+        storedState: CartState
       }
     }
 
@@ -73,6 +80,15 @@ export function checkoutCartAction(order: OrderInfo) {
     type: ActionTypes.CHECKOUT_CART,
     payload: {
       order,
+    },
+  } satisfies Actions
+}
+
+export function loadStateAction(storedState: CartState) {
+  return {
+    type: ActionTypes.LOAD_STATE,
+    payload: {
+      storedState,
     },
   } satisfies Actions
 }

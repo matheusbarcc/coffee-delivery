@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { produce } from 'immer'
 import { OrderInfo } from '../pages/cart'
 import { Actions, ActionTypes } from './actions'
@@ -13,7 +14,7 @@ export interface Order extends OrderInfo {
   items: Item[]
 }
 
-interface CartState {
+export interface CartState {
   cart: Item[]
   orders: Order[]
 }
@@ -73,6 +74,12 @@ export function cartReducer(state: CartState, action: Actions) {
         }
         draft.orders.push(newOrder)
         draft.cart = []
+      })
+
+    case ActionTypes.LOAD_STATE:
+      return produce(state, (draft) => {
+        draft.cart = action.payload.storedState.cart
+        draft.orders = action.payload.storedState.orders
       })
 
     default:

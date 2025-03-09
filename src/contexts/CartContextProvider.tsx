@@ -1,4 +1,10 @@
-import { createContext, ReactNode, useEffect, useReducer } from 'react'
+import {
+  createContext,
+  ReactNode,
+  useEffect,
+  useReducer,
+  useState,
+} from 'react'
 import { OrderInfo } from '../pages/cart'
 import { cartReducer, Item, Order } from '../reducers/reducer'
 import {
@@ -6,6 +12,7 @@ import {
   checkoutCartAction,
   decreaseItemAmountAction,
   increaseItemAmountAction,
+  loadStateAction,
   removeItemAction,
 } from '../reducers/actions'
 
@@ -26,24 +33,23 @@ interface CartContextProviderProps {
 }
 
 export function CartContextProvider({ children }: CartContextProviderProps) {
-  const [cartState, dispatch] = useReducer(
-    cartReducer,
-    {
-      cart: [],
-      orders: [],
-    },
-    // (cartState) => {
-    //   const storedState = localStorage.getItem(
-    //     '@coffee-delivery:cart-state-1.0.0',
-    //   )
+  const [isHydrated, setIsHydrated] = useState(false)
+  const [cartState, dispatch] = useReducer(cartReducer, {
+    cart: [],
+    orders: [],
+  })
 
-    //   if (storedState) {
-    //     return JSON.parse(storedState)
-    //   }
+  useEffect(() => {
+    const storedState = localStorage.getItem('@coffee-delivery:cart-state')
 
-    //   return cartState
-    // },
-  )
+    if (storedState) {
+      const jsonState = JSON.parse(storedState)
+
+      dispatch(loadStateAction(jsonState))
+    }
+
+    setIsHydrated(true)
+  }, [])
 
   const { cart, orders } = cartState
 
@@ -68,12 +74,12 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
   }
 
   useEffect(() => {
-    if (cartState) {
+    if (isHydrated && cartState) {
       const stringfiedState = JSON.stringify(cartState)
 
-      localStorage.setItem('@coffee-delivery:cart-state-1.0.0', stringfiedState)
+      localStorage.setItem('@coffee-delivery:cart-state', stringfiedState)
     }
-  }, [cartState])
+  }, [isHydrated, cartState])
 
   return (
     <CartContext.Provider

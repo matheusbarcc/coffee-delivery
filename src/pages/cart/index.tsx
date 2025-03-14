@@ -1,5 +1,6 @@
 import {
   Bank,
+  Check,
   CreditCard,
   CurrencyDollar,
   MapPinLine,
@@ -20,6 +21,7 @@ import {
   CartItemInfo,
   Subtotal,
   ConfirmButton,
+  ChangeContainer,
 } from './style'
 import { PaymentRadio } from '../../components/PaymentRadio'
 import Image from 'next/image'
@@ -32,15 +34,25 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { TextInput } from '../../components/TextInput'
 import { ErrorMessage } from '../../components/TextInput/style'
+import { useEffect } from 'react'
+
+interface AddressInfo {
+  bairro: string
+  logradouro: string
+  localidade: string
+  uf: string
+  estado: string
+  erro?: string
+}
 
 const newOrder = z.object({
-  cep: z.number({ invalid_type_error: 'Informe um CEP válido' }),
+  cep: z.string({ invalid_type_error: 'Informe um CEP válido' }),
   street: z.string().min(1, 'Informe a rua'),
   number: z.number({ invalid_type_error: 'Informe o número' }),
   complement: z.string().optional().nullable(),
   neighborhood: z.string().min(1, 'Informe o bairro'),
   city: z.string().min(1, 'Informe a cidade'),
-  state: z.string().min(1, 'Informe o estado'),
+  state: z.string().min(2, 'Informe o estado').max(2, 'Estado inválido'),
   paymentMethod: z.enum(['credit', 'debit', 'cash'], {
     invalid_type_error: 'Informe a forma de pagamento',
   }),
@@ -53,6 +65,7 @@ export default function Cart() {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(newOrder),
@@ -106,6 +119,31 @@ export default function Cart() {
   }
 
   const selectedPaymentMethod = watch('paymentMethod')
+  const cepValue = watch('cep')
+
+  useEffect(() => {
+    async function fetchAddress() {
+      if (cepValue && cepValue.toString().length === 9) {
+        try {
+          const response = await fetch(
+            `https://viacep.com.br/ws/${cepValue}/json/`,
+          )
+          const addressInfo: AddressInfo = await response.json()
+
+          if (!addressInfo.erro) {
+            setValue('street', addressInfo.logradouro)
+            setValue('neighborhood', addressInfo.bairro)
+            setValue('city', addressInfo.localidade)
+            setValue('state', addressInfo.uf)
+          }
+        } catch (error) {
+          console.error('Error fetching address:', error)
+        }
+      }
+    }
+
+    fetchAddress()
+  }, [cepValue, setValue])
 
   return (
     <form onSubmit={handleSubmit(handleOrderSubmit)}>
@@ -123,9 +161,10 @@ export default function Cart() {
             <AddressForm>
               <div className="text-input-container">
                 <TextInput
+                  mask="99999-999"
                   placeholder="CEP"
                   css={{ maxWidth: '200px' }}
-                  {...register('cep', { valueAsNumber: true })}
+                  {...register('cep')}
                   error={errors.cep}
                 />
               </div>
@@ -163,6 +202,7 @@ export default function Cart() {
                   error={errors.city}
                 />
                 <TextInput
+                  mask="aa"
                   placeholder="UF"
                   {...register('state')}
                   error={errors.state}
@@ -210,6 +250,15 @@ export default function Cart() {
               </PaymentRadioForm>
               {errors.paymentMethod && (
                 <ErrorMessage>{errors.paymentMethod.message}</ErrorMessage>
+              )}
+              {selectedPaymentMethod === 'cash' && (
+                <ChangeContainer>
+                  Troco para{' '}
+                  <TextInput
+                    placeholder="R$ 00,00"
+                    css={{ maxWidth: '178.67px' }}
+                  />
+                </ChangeContainer>
               )}
             </div>
           </PaymentContainer>
@@ -278,7 +327,10 @@ export default function Cart() {
             </Subtotal>
             <ConfirmButton disabled={coffeesInCart.length < 1} type="submit">
               {coffeesInCart.length > 0 ? (
-                <span>CONFIRMAR PEDIDO</span>
+                <>
+                  <span>CONFIRMAR PEDIDO</span>
+                  <Check weight="bold" size={20} />
+                </>
               ) : (
                 <span>NENHUM ITEM SELECIONADO</span>
               )}

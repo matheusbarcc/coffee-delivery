@@ -241,6 +241,7 @@ export const ConfirmButton = styled('button', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  gap: '.5rem',
 
   background: '$yellow',
   padding: '.75rem',
@@ -250,15 +251,28 @@ export const ConfirmButton = styled('button', {
   fontWeight: 'bold',
   color: '$white',
 
-  transition: 'background .2s',
+  transition: 'background .2s, gap .2s',
 
   '&:not(:disabled):hover': {
     background: '$yellow-dark',
     cursor: 'pointer',
+    gap: '1rem',
   },
 
   '&:disabled': {
     opacity: 0.5,
     cursor: 'not-allowed',
   },
+})
+
+export const ChangeContainer = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '.25rem',
+
+  marginTop: '1rem',
+  marginLeft: 'auto',
+
+  fontSize: '$text-s',
+  fontWeight: 'bold',
 })

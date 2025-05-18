@@ -1,4 +1,4 @@
-import { styled } from '../../styles/globals'
+import { styled } from './globals'
 
 export const Container = styled('div', {
   display: 'flex',

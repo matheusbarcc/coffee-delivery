@@ -1,4 +1,4 @@
-import { styled } from '../../styles/globals'
+import { styled } from './globals'
 
 export const Hero = styled('div', {
   position: 'relative',

@@ -18,10 +18,12 @@ export const TextInput = forwardRef(function TextInput(
     <Container>
       {mask ? (
         <InputMask mask={mask} {...rest}>
-          {(inputProps: any) => <Input ref={ref} css={css} {...inputProps} />}
+          {(inputProps: any) => (
+            <Input hasError={!!error} ref={ref} css={css} {...inputProps} />
+          )}
         </InputMask>
       ) : (
-        <Input ref={ref} css={css} {...rest} />
+        <Input hasError={!!error} ref={ref} css={css} {...rest} />
       )}
       {error?.message ? (
         <ErrorMessage>{error.message}</ErrorMessage>

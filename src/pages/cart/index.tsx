@@ -22,11 +22,11 @@ import {
   Subtotal,
   ConfirmButton,
   ChangeContainer,
-} from './style'
+} from '../../styles/cart'
 import { PaymentRadio } from '../../components/PaymentRadio'
 import Image from 'next/image'
 
-import { coffees } from '../../../data.json'
+import data from '../../../data.json'
 import { AmountInput } from '../../components/AmountInput'
 import { z } from 'zod'
 import { useCart } from '../../hooks/useCart'
@@ -46,7 +46,7 @@ interface AddressInfo {
 }
 
 const newOrder = z.object({
-  cep: z.string({ invalid_type_error: 'Informe um CEP válido' }),
+  cep: z.string().min(1, 'Informe o CEP'),
   street: z.string().min(1, 'Informe a rua'),
   number: z.number({ invalid_type_error: 'Informe o número' }),
   complement: z.string().optional().nullable(),
@@ -61,6 +61,8 @@ const newOrder = z.object({
 export type OrderInfo = z.infer<typeof newOrder>
 
 export default function Cart() {
+  const { coffees } = data
+
   const {
     register,
     handleSubmit,
@@ -131,10 +133,12 @@ export default function Cart() {
           const addressInfo: AddressInfo = await response.json()
 
           if (!addressInfo.erro) {
-            setValue('street', addressInfo.logradouro)
-            setValue('neighborhood', addressInfo.bairro)
-            setValue('city', addressInfo.localidade)
-            setValue('state', addressInfo.uf)
+            setValue('street', addressInfo.logradouro, { shouldValidate: true })
+            setValue('neighborhood', addressInfo.bairro, {
+              shouldValidate: true,
+            })
+            setValue('city', addressInfo.localidade, { shouldValidate: true })
+            setValue('state', addressInfo.uf, { shouldValidate: true })
           }
         } catch (error) {
           console.error('Error fetching address:', error)
@@ -202,7 +206,6 @@ export default function Cart() {
                   error={errors.city}
                 />
                 <TextInput
-                  mask="aa"
                   placeholder="UF"
                   {...register('state')}
                   error={errors.state}

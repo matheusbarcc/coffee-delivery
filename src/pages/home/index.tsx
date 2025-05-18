@@ -1,13 +1,21 @@
-import { Hero, HeroContent, Heading, Items, CoffeeList } from './style'
+import {
+  Hero,
+  HeroContent,
+  Heading,
+  Items,
+  CoffeeList,
+} from '../../styles/home'
 import background from '../../../public/images/background.png'
 import heroImage from '../../../public/images/hero-image.png'
 import Image from 'next/image'
 import { Coffee, Package, ShoppingCart, Timer } from '@phosphor-icons/react'
 import { theme } from '../../styles/globals'
 import { CoffeeCard } from '../../components/CoffeeCard'
-import { coffees } from '../../../data.json'
+import data from '../../../data.json'
 
 export default function Home() {
+  const { coffees } = data
+
   return (
     <div style={{ marginTop: '104px' }}>
       <Hero>

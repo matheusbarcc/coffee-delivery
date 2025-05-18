@@ -2,6 +2,7 @@ import { styled } from '../../styles/globals'
 
 export const Container = styled('div', {
   display: 'flex',
+  flexDirection: 'column',
   alignItems: 'flex-start',
   width: '100%',
 })
@@ -22,6 +23,14 @@ export const Input = styled('input', {
   '&:focus': {
     outline: '0',
     border: '1px solid $yellow-dark',
+  },
+
+  variants: {
+    hasError: {
+      true: {
+        borderColor: '#ff0000',
+      },
+    },
   },
 })
 

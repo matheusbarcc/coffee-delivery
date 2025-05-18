@@ -1,5 +1,11 @@
 import { MapPin } from '@phosphor-icons/react/dist/ssr'
-import { Container, Content, Heading, OrderSummary, SummaryItem } from './style'
+import {
+  Container,
+  Content,
+  Heading,
+  OrderSummary,
+  SummaryItem,
+} from '../../../styles/order'
 import { theme } from '../../../styles/globals'
 import { ArrowRight, CurrencyDollar, Timer } from '@phosphor-icons/react'
 import success from '../../../../public/images/success.svg'

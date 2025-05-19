@@ -24,7 +24,7 @@ export function Header() {
       <ActionsContainer>
         <Location>
           <MapPin weight="fill" size={22} />
-          <span>Florianópolis, SC</span>
+          <span>Belo Horizonte, MG</span>
         </Location>
         <Cart onClick={() => router.push('/cart')}>
           <ShoppingCart weight="fill" size={22} />

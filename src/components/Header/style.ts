@@ -18,6 +18,22 @@ export const Container = styled('div', {
     all: 'unset',
     cursor: 'pointer',
   },
+
+  '@media(max-width: 1500px)': {
+    padding: '2rem 16rem',
+  },
+
+  '@media(max-width: 1080px)': {
+    padding: '2rem 8rem',
+  },
+
+  '@media(max-width: 650px)': {
+    padding: '2rem 4rem',
+  },
+
+  '@media(max-width: 400px)': {
+    padding: '2rem 2rem',
+  },
 })
 
 export const ActionsContainer = styled('div', {

@@ -7,6 +7,22 @@ export const Container = styled('div', {
 
   marginTop: '5rem',
   padding: '6rem 24rem',
+
+  '@media(max-width: 1500px)': {
+    padding: '2rem 16rem',
+  },
+
+  '@media(max-width: 1080px)': {
+    padding: '2rem 8rem',
+  },
+
+  '@media(max-width: 650px)': {
+    padding: '2rem 4rem',
+  },
+
+  '@media(max-width: 400px)': {
+    padding: '2rem 2rem',
+  },
 })
 
 export const Heading = styled('div', {
@@ -52,20 +68,53 @@ export const Heading = styled('div', {
       gap: '1.125rem',
     },
   },
+
+  '@media(max-width: 500px)': {
+    '& > h1': {
+      fontSize: '$title-m',
+    },
+    '& > p': {
+      fontSize: '$text-s',
+    },
+  },
 })
 
 export const Content = styled('div', {
-  display: 'flex',
+  display: 'grid',
+  gridTemplateColumns: '500px auto',
   alignItems: 'center',
   gap: '6.25rem',
+
+  '@media(max-width: 1700px)': {
+    gridTemplateColumns: '400px auto',
+    gap: '4rem',
+  },
+
+  '@media(max-width: 1400px)': {
+    gap: '2rem',
+    '& #illustration-img': {
+      width: '400px',
+    },
+  },
+
+  '@media(max-width: 1250px)': {
+    gap: '1rem',
+    '& #illustration-img': {
+      width: '330px',
+    },
+  },
+
+  '@media(max-width: 950px)': {
+    gridTemplateColumns: 'auto',
+    justifyItems: 'center',
+  },
 })
 
 export const OrderSummary = styled('div', {
   display: 'flex',
   alignItems: 'center',
-  // justifyContent: 'center',
 
-  width: '570px',
+  width: '100%',
 
   border: 'none',
   backgroundColor: '$background',
@@ -90,6 +139,10 @@ export const OrderSummary = styled('div', {
     flexDirection: 'column',
     gap: '2rem',
   },
+
+  '@media(max-width: 500px)': {
+    padding: '1.5rem',
+  },
 })
 
 export const SummaryItem = styled('div', {
@@ -106,5 +159,9 @@ export const SummaryItem = styled('div', {
 
   span: {
     fontWeight: 'bold',
+  },
+
+  '@media(max-width: 650px)': {
+    fontSize: '$text-s',
   },
 })

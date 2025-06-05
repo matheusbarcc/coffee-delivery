@@ -67,7 +67,7 @@ export default function Home() {
               </div>
             </Items>
           </div>
-          <Image src={heroImage} alt="" />
+          <Image src={heroImage} id="hero-img" alt="" />
         </HeroContent>
         <Image src={background} id="hero-bg" alt="" />
       </Hero>

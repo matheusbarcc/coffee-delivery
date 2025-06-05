@@ -84,7 +84,7 @@ export default function Order() {
                 </SummaryItem>
               </div>
             </OrderSummary>
-            <Image src={success} alt="" />
+            <Image src={success} id="illustration-img" alt="" />
           </Content>
         </>
       ) : (

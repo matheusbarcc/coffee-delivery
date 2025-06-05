@@ -40,6 +40,7 @@ export const { styled, globalCss, theme, getCssText } = createStitches({
       tag: '10px',
       'button-g': '14px',
       'button-m': '12px',
+      'button-s': '10px',
     },
     fontWeights: {
       regular: '400',

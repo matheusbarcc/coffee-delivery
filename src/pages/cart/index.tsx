@@ -22,6 +22,8 @@ import {
   Subtotal,
   ConfirmButton,
   ChangeContainer,
+  NeighborhoodCityUFContainer,
+  NumberComplementContainer,
 } from '../../styles/cart'
 import { PaymentRadio } from '../../components/PaymentRadio'
 import Image from 'next/image'
@@ -133,7 +135,9 @@ export default function Cart() {
           const addressInfo: AddressInfo = await response.json()
 
           if (!addressInfo.erro) {
-            setValue('street', addressInfo.logradouro, { shouldValidate: true })
+            setValue('street', addressInfo.logradouro, {
+              shouldValidate: true,
+            })
             setValue('neighborhood', addressInfo.bairro, {
               shouldValidate: true,
             })
@@ -181,7 +185,7 @@ export default function Cart() {
                 />
               </div>
 
-              <div style={{ gridTemplateColumns: '200px 1fr' }}>
+              <NumberComplementContainer>
                 <TextInput
                   placeholder="Número"
                   {...register('number', { valueAsNumber: true })}
@@ -192,9 +196,9 @@ export default function Cart() {
                   {...register('complement')}
                   error={errors.complement}
                 />
-              </div>
+              </NumberComplementContainer>
 
-              <div style={{ gridTemplateColumns: '200px 276px 1fr' }}>
+              <NeighborhoodCityUFContainer>
                 <TextInput
                   placeholder="Bairro"
                   {...register('neighborhood')}
@@ -210,7 +214,7 @@ export default function Cart() {
                   {...register('state')}
                   error={errors.state}
                 />
-              </div>
+              </NeighborhoodCityUFContainer>
             </AddressForm>
           </AddressContainer>
           <PaymentContainer>
@@ -231,7 +235,7 @@ export default function Cart() {
                   {...register('paymentMethod')}
                   value="credit"
                 >
-                  <CreditCard size={16} />
+                  <CreditCard size={23} />
                   <span>CARTÃO DE CRÉDITO</span>
                 </PaymentRadio>
                 <PaymentRadio
@@ -239,7 +243,7 @@ export default function Cart() {
                   {...register('paymentMethod')}
                   value="debit"
                 >
-                  <Bank size={16} />
+                  <Bank size={23} />
                   <span>CARTÃO DE DÉBITO</span>
                 </PaymentRadio>
                 <PaymentRadio
@@ -247,7 +251,7 @@ export default function Cart() {
                   {...register('paymentMethod')}
                   value="cash"
                 >
-                  <Money size={16} />
+                  <Money size={23} />
                   <span>DINHEIRO</span>
                 </PaymentRadio>
               </PaymentRadioForm>

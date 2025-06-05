@@ -1,7 +1,8 @@
 import { styled } from './globals'
 
 export const Container = styled('div', {
-  display: 'flex',
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr',
   gap: '2rem',
 
   marginTop: '2.5rem',
@@ -17,6 +18,27 @@ export const Container = styled('div', {
     color: '$base-subtitle',
     marginBottom: '1rem',
   },
+
+  '@media(max-width: 1500px)': {
+    padding: '2rem 16rem',
+    gap: '1rem',
+  },
+
+  '@media(max-width: 1300px)': {
+    gridTemplateColumns: '1fr',
+  },
+
+  '@media(max-width: 1080px)': {
+    padding: '2rem 8rem',
+  },
+
+  '@media(max-width: 650px)': {
+    padding: '2rem 4rem',
+  },
+
+  '@media(max-width: 400px)': {
+    padding: '2rem 2rem',
+  },
 })
 
 export const AddressContainer = styled('div', {
@@ -24,11 +46,15 @@ export const AddressContainer = styled('div', {
   flexDirection: 'column',
   gap: '2rem',
 
-  width: '640px',
+  width: '100%',
 
   background: '$base-card',
   borderRadius: '6px',
   padding: '2.5rem',
+
+  '@media(max-width: 650px)': {
+    padding: '1rem',
+  },
 })
 
 export const AddressHeading = styled('div', {
@@ -50,6 +76,15 @@ export const AddressHeading = styled('div', {
   p: {
     fontSize: '$text-s',
     color: '$base-text',
+  },
+
+  '@media(max-width: 650px)': {
+    h3: {
+      fontSize: '$text-s',
+    },
+    p: {
+      fontSize: '$text-xs',
+    },
   },
 })
 
@@ -74,12 +109,24 @@ export const AddressForm = styled('div', {
   },
 })
 
+export const NumberComplementContainer = styled('div', {
+  gridTemplateColumns: '100px auto',
+})
+
+export const NeighborhoodCityUFContainer = styled('div', {
+  gridTemplateColumns: 'auto auto 75px',
+
+  '@media(max-width: 650px)': {
+    gridTemplateColumns: 'auto auto',
+  },
+})
+
 export const PaymentContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   gap: '2rem',
 
-  width: '640px',
+  width: '100%',
   marginTop: '.75rem',
 
   background: '$base-card',
@@ -90,6 +137,10 @@ export const PaymentContainer = styled('div', {
     display: 'flex',
     flexDirection: 'column',
     gap: '.125rem',
+  },
+
+  '@media(max-width: 650px)': {
+    padding: '1rem',
   },
 })
 
@@ -113,14 +164,27 @@ export const PaymentHeading = styled('div', {
     fontSize: '$text-s',
     color: '$base-text',
   },
+
+  '@media(max-width: 650px)': {
+    h3: {
+      fontSize: '$text-s',
+    },
+    p: {
+      fontSize: '$text-xs',
+    },
+  },
 })
 
 export const PaymentRadioForm = styled('div', {
-  display: 'flex',
-  alignItems: 'center',
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr 1fr',
   gap: '.75rem',
 
   width: '100%',
+
+  '@media(max-width: 1500px)': {
+    gridTemplateColumns: '1fr',
+  },
 })
 
 export const CartSummaryContainer = styled('div', {
@@ -132,6 +196,10 @@ export const CartSummaryContainer = styled('div', {
   background: '$base-card',
   padding: '2.5rem',
   borderRadius: '6px 36px 6px 36px',
+
+  '@media(max-width: 650px)': {
+    padding: '1rem',
+  },
 })
 
 export const CartItem = styled('div', {
